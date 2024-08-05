@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: SpringBootTest
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: y6263309
+    url: jdbc:mysql://39.108.164.12/assignment_6034
+  data:
+    redis:
+      host: 39.108.164.12
+      port: 6379
+      password: y6263309
+  rabbitmq:
+    addresses: 39.108.164.12
+    username: root
+    password: y6263309
+    virtual-host: /test
+    port: 5672
+mybatis-plus:
+  mapper-locations: classpath:/xml/*.xml

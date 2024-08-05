@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yjr.springboottest.mapper.AccountOneToManyCommentVoMapper">
+
+    <resultMap id="BaseResultMap" type="com.yjr.springboottest.entity.vo.AccountOneToManyCommentVo" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <collection property="commentVoList" ofType="com.yjr.springboottest.entity.vo.CommentVo">
+            <result column="comment" property="comment" jdbcType="VARCHAR" />
+            <result column="comment_date" property="commentDate" jdbcType="TIMESTAMP" />
+        </collection>
+    </resultMap>
+
+    <select id="queryCommentList" resultMap="BaseResultMap">
+        SELECT a.id, a.email, a.username, c.comment, c.comment_date
+        FROM db_account a
+        LEFT JOIN db_comment c
+        ON a.id = c.user_id
+        WHERE a.id = #{id}
+    </select>
+
+</mapper>
