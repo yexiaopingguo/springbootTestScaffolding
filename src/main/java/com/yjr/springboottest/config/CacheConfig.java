@@ -12,8 +12,8 @@ public class CacheConfig {
     @Bean
     public Cache<String, Integer> caffeineCache() {
         return Caffeine.newBuilder()
-                .expireAfterAccess(5, TimeUnit.SECONDS)
-                .maximumSize(3)
+                .expireAfterAccess(5, TimeUnit.MINUTES)
+                .maximumSize(99999)
                 .build();
     }
 }

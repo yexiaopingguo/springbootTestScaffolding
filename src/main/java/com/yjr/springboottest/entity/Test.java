@@ -6,10 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Data
 @NoArgsConstructor
@@ -22,11 +20,7 @@ public class Test {
 
     public static void main(String[] args) {
 
-        Map<String, String> map = new HashMap<>();
-        map.put("nb1"," nb1");
-        map.put("nb2"," nb2");
-
-        System.out.println(map.get("nnn"));
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     }
 }
