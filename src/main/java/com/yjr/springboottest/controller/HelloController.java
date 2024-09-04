@@ -1,14 +1,14 @@
 package com.yjr.springboottest.controller;
 
-import com.yjr.springboottest.entity.Account;
 import com.yjr.springboottest.entity.Test;
-import com.yjr.springboottest.mapper.AccountMapper;
 import com.yjr.springboottest.mapper.TestMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 public class HelloController {
 
