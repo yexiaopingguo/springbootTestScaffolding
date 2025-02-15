@@ -1,5 +1,5 @@
 # 简介
-SpringBoot项目的调试脚手架，基于 Gradle 包管理工具，内置了一些简单 CURD 范例和一些数据库连接测试用例。
+SpringBoot项目的调试脚手架，基于 Gradle 包管理工具，内置了一些简单 CURD 范例和一些数据库连接测试用例。QvQ
 
 JDK17
 
