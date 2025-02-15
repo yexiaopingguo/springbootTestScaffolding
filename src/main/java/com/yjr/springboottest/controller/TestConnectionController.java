@@ -2,11 +2,13 @@ package com.yjr.springboottest.controller;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.yjr.springboottest.entity.Account;
+import com.yjr.springboottest.entity.Student;
 import com.yjr.springboottest.mapper.AccountMapper;
 import com.yjr.springboottest.service.CacheService;
 import org.checkerframework.checker.units.qual.A;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +34,9 @@ public class TestConnectionController {
     @Autowired
     private CacheService cacheService;
 
+    @Autowired
+    private MongoTemplate mongoTemplate;
+
     // Test MySQL
     @GetMapping("/mysql")
     public Account testMysql() {
@@ -42,6 +47,17 @@ public class TestConnectionController {
     @GetMapping("/redis")
     public void testRedis() {
         template.opsForValue().set("testKey", "testValue");
+    }
+
+    // Test MongoDB
+    @GetMapping("/mongoDB")
+    public void testmongoDB() {
+        // 定义一个简单的测试文档
+        String collectionName = "student";
+        Student student = new Student(1, "1", "2", "3");
+
+        // 插入测试数据
+        mongoTemplate.insert(student, collectionName);
     }
 
     // Test RabbitMQ
