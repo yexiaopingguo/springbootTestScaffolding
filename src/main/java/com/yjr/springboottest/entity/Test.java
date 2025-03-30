@@ -1,11 +1,16 @@
 package com.yjr.springboottest.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.yjr.springboottest.entity.enums.ProcessStatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import reactor.core.publisher.Flux;
+import reactor.core.scheduler.Schedulers;
 
+import java.time.LocalTime;
 import java.util.Stack;
+import java.util.concurrent.TimeUnit;
 
 
 @Data
@@ -36,11 +41,22 @@ public class Test {
         return root;
     }
 
-    public static void main(String[] args) {
-
-        int[] test = {-10,-3,0,5,9};
-
-        System.out.println(sortedArrayToBST(test));
-
+    private static Flux<String> getFluxWithDefer1() {
+        // 创建一个包含当前时间的 Flux
+        String currentTime = LocalTime.now().toString();
+        return Flux.just("Time at creation: " + currentTime);
     }
+
+    private static Flux<String> getFluxWithDefer2() {
+        // 使用 defer 延迟创建 Flux
+        return Flux.defer(() -> {
+            String currentTime = LocalTime.now().toString();
+            return Flux.just("Time at subscription: " + currentTime);
+        });
+    }
+
+    public static void main(String[] args) {
+        System.out.println(ProcessStatusEnum.PENDING.getCode());
+    }
+
 }
