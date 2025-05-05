@@ -40,23 +40,5 @@ public class Test {
 
         return root;
     }
-
-    private static Flux<String> getFluxWithDefer1() {
-        // 创建一个包含当前时间的 Flux
-        String currentTime = LocalTime.now().toString();
-        return Flux.just("Time at creation: " + currentTime);
-    }
-
-    private static Flux<String> getFluxWithDefer2() {
-        // 使用 defer 延迟创建 Flux
-        return Flux.defer(() -> {
-            String currentTime = LocalTime.now().toString();
-            return Flux.just("Time at subscription: " + currentTime);
-        });
-    }
-
-    public static void main(String[] args) {
-        System.out.println(ProcessStatusEnum.PENDING.getCode());
-    }
-
+    
 }

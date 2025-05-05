@@ -21,3 +21,9 @@ spring:
     port: 5672
 mybatis-plus:
   mapper-locations: classpath:/xml/*.xml
+server:
+  servlet:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
